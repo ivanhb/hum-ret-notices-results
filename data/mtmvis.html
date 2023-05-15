@@ -1,0 +1,2948 @@
+
+        <!DOCTYPE html>
+        <html>
+          <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                <script src="https://cdn.plot.ly/plotly-1.52.3.min.js" charset="utf-8"></script>
+
+                <style>
+                        body{
+                          padding: 30px;
+                        }
+                        .chart-container{
+                          display: inline-block;
+                          vertical-align: top;
+                          width: 70%;
+                          border-left: 1px solid gray;
+                          margin-left: 20px;
+                          height: auto;
+                          max-height: 700px;
+                          min-width: 800px;
+                        }
+                        .handlers-container{
+                          padding: 10px;
+                          width: fit-content;
+                          width: 300px;
+                          display: inline-block;
+                        }
+                        .sec-title{
+                          font-size: 14pt;
+                          border-bottom: solid 1px;
+                          padding-left: 5px;
+                        }
+                        #btn_filter{
+                          margin-top: 5px;
+                          width: 100%;
+                        }
+                        #btn_filter:hover{
+                          color: white;
+                        }
+
+                        .switch_buttons{
+                          width: 100%;
+                          vertical-align: top;
+                          margin-bottom: 20px;
+                        }
+                        .switch-btn{
+                          width: 130px;
+                          font-size: 10pt;
+                        }
+
+                        .g-1{
+                          margin-bottom: 5px;
+                        }
+                        #lines_chart{
+                          display: none;
+                        }
+
+                        #filters_container{
+                          padding: 10px;
+                          width: 100%;
+                          max-height: 200px;
+                        }
+                        .m-box{
+                          vertical-align: top;
+                          margin-right: 5%;
+                          width: 100%;
+                          margin-bottom: 10px;
+                        }
+                        .m-box .pre{
+                          font-size: 16pt;
+                          padding-left:3%;
+                          max-width: 5%;
+                          border-left: solid 1px gray;
+                          vertical-align: middle;
+                        }
+                        .m-box button{
+                          display: inline-block;
+                          width: 90%;
+                          font-size: 12pt;
+                          white-space: normal;
+
+                        }
+                        label.f-all-checkbox{
+                            color: navy;
+                            font-size: 10pt!important;
+                            padding: 5px;
+                        }
+                        .m-box-values{
+                          display: none;
+                          max-height: 150px;
+                          overflow: scroll;
+                          margin-top: 1px;
+                          margin: 0 auto;
+                        }
+                        .m-box-values label{
+                          padding-left: 10px;
+                          font-size: 10pt;
+                          vertical-align: center;
+                          max-width: 80%;
+                        }
+                        #refine_container{
+                          padding: 10px;
+                          width: 100%;
+                          max-height: 200px;
+                          margin-bottom: 20px;
+                        }
+                        #refine_container select{
+                           width: 100%;
+                        }
+                </style>
+                <title>Viualizations</title>
+
+                <script type="text/javascript">
+
+                /*FROM MITAO*/
+                var app_init_data = {
+    "1": [
+        "10.4236__SLASH__ojpp.2017.72009",
+        "10.5169__SLASH__seals-791151",
+        "10.1007__SLASH__1-4020-3001-0_16",
+        "10.1007__SLASH__978-3-030-24139-1_11",
+        "10.1007__SLASH__978-3-319-66634-1_28",
+        "10.1007__SLASH__978-981-10-4053-5_3",
+        "10.1007__SLASH__s00170-022-09634-x",
+        "10.1007__SLASH__s10912-009-9104-6",
+        "10.1007__SLASH__s11059-014-0289-y",
+        "10.1007__SLASH__s11059-017-0410-0",
+        "10.1007__SLASH__s11245-015-9305-8",
+        "10.1007__SLASH__s41603-018-0040-y",
+        "10.1016__SLASH__j.conbuildmat.2022.129153",
+        "10.1016__SLASH__j.shpsa.2011.02.001",
+        "10.1017__SLASH__jbr.2021.186",
+        "10.1073__SLASH__pnas.0903490106",
+        "10.1080__SLASH__01419870.2014.886365",
+        "10.1080__SLASH__03058034.2021.1896227",
+        "10.1080__SLASH__0895769X.2020.1734288",
+        "10.1080__SLASH__09502386.2019.1621075",
+        "10.1080__SLASH__09503110.2020.1815154",
+        "10.1080__SLASH__09503110.2020.1815157",
+        "10.1080__SLASH__09596410.2021.1945751",
+        "10.1080__SLASH__13555502.2010.546618",
+        "10.1080__SLASH__14608944.2019.1687179",
+        "10.1080__SLASH__14664658.2019.1672947",
+        "10.1080__SLASH__14715880.2014.886808",
+        "10.1080__SLASH__14725886.2012.722811",
+        "10.1080__SLASH__14725886.2021.1903762",
+        "10.1080__SLASH__14782804.2018.1558959",
+        "10.1080__SLASH__14788810.2015.1044242",
+        "10.1080__SLASH__1743873X.2018.1499460",
+        "10.1080__SLASH__17445647.2012.690181",
+        "10.1080__SLASH__19422539.2019.1649935",
+        "10.1080__SLASH__23311983.2021.2005301",
+        "10.1080__SLASH__25739638.2020.1866286",
+        "10.1093__SLASH__camqtly__SLASH__bfs030",
+        "10.1093__SLASH__fh__SLASH__crn067",
+        "10.1093__SLASH__jos__SLASH__ffx002",
+        "10.1111__SLASH__disa.12364",
+        "10.1111__SLASH__j.1741-4113.2007.00438.x",
+        "10.1155__SLASH__2022__SLASH__9802454",
+        "10.1155__SLASH__2022__SLASH__9870505",
+        "10.1162__SLASH__artm_e_00332",
+        "10.1177__SLASH__0024363920965378",
+        "10.1177__SLASH__0047244119839667",
+        "10.1177__SLASH__1368431011432375",
+        "10.1215__SLASH__1089201x-2008-072",
+        "10.1353__SLASH__cdr.2011.0017",
+        "10.1353__SLASH__dtc.2013.0033",
+        "10.1353__SLASH__dtc.2014.0004",
+        "10.1353__SLASH__frf.0.0051",
+        "10.1353__SLASH__lit.2015.0029",
+        "10.1353__SLASH__sho.2011.0038",
+        "10.1515__SLASH__9783110204544.6.277",
+        "10.1515__SLASH__nzsth-2022-4002",
+        "10.16995__SLASH__ee.1801",
+        "10.18352__SLASH__erlacs.9751",
+        "10.2174__SLASH__138945012302220118162514",
+        "10.30605__SLASH__ethicallingua.v5i2.1037",
+        "10.30935__SLASH__ojcmt__SLASH__9302",
+        "10.3366__SLASH__nfs.2015.0111",
+        "10.3846__SLASH__jau.2020.12085",
+        "10.4102__SLASH__hts.v77i1.6611"
+    ],
+    "2": [
+        "10.1109__SLASH__INDUSIS.2010.5565720",
+        "10.3989__SLASH__hs.2015.013",
+        "10.1016__SLASH__j.sbspro.2011.05.014",
+        "10.1016__SLASH__j.sbspro.2013.08.841",
+        "10.1016__SLASH__j.sbspro.2015.01.949",
+        "10.1075__SLASH__rro.50.1.001edi",
+        "10.1080__SLASH__00397709.2015.1044880",
+        "10.1080__SLASH__00397709.2015.1044881",
+        "10.1080__SLASH__13642529.2014.915496",
+        "10.1086__SLASH__711388",
+        "10.1093__SLASH__jcs__SLASH__cst044",
+        "10.1109__SLASH__CAIDCD.2009.5375299",
+        "10.1109__SLASH__CAIDCD.2009.5375254",
+        "10.1109__SLASH__CAIDCD.2009.5375247",
+        "10.1109__SLASH__CAIDCD.2009.5375244",
+        "10.1109__SLASH__CAIDCD.2009.5375241",
+        "10.1109__SLASH__CAIDCD.2009.5375213",
+        "10.1109__SLASH__CAIDCD.2009.5375124",
+        "10.1109__SLASH__CAIDCD.2009.5375094",
+        "10.1109__SLASH__CAIDCD.2009.5375075",
+        "10.1109__SLASH__CAIDCD.2009.5375059",
+        "10.1109__SLASH__CAIDCD.2009.5375037",
+        "10.1109__SLASH__CAIDCD.2009.5375014",
+        "10.1109__SLASH__CAIDCD.2009.5374944",
+        "10.1109__SLASH__CAIDCD.2009.5374939",
+        "10.1109__SLASH__CAIDCD.2009.5374938",
+        "10.1109__SLASH__CAIDCD.2009.5374918",
+        "10.1109__SLASH__CAIDCD.2009.5374875",
+        "10.1109__SLASH__CAIDCD.2009.5374859",
+        "10.1109__SLASH__CAIDCD.2009.5375382",
+        "10.1109__SLASH__CAIDCD.2009.5375385",
+        "10.1109__SLASH__CAIDCD.2010.5681866",
+        "10.1109__SLASH__ICAMS.2010.5552908",
+        "10.1109__SLASH__ICETCE.2011.5775883",
+        "10.1109__SLASH__ICETCE.2011.5775744",
+        "10.1109__SLASH__ICETCE.2011.5775736",
+        "10.1109__SLASH__ICETCE.2011.5775307",
+        "10.1109__SLASH__ICETCE.2011.5774647",
+        "10.1109__SLASH__ICETCE.2011.5774410",
+        "10.1109__SLASH__ICETCE.2011.5774294",
+        "10.1109__SLASH__ICETCE.2011.5774204",
+        "10.1109__SLASH__ICETCE.2011.5775975",
+        "10.1109__SLASH__ICETCE.2011.5776030",
+        "10.1109__SLASH__ICETCE.2011.5776378",
+        "10.1109__SLASH__ICETCE.2011.5776408",
+        "10.1109__SLASH__ICETCE.2011.5776469",
+        "10.1109__SLASH__ICETCE.2011.5776471",
+        "10.1109__SLASH__ICMSS.2009.5302177",
+        "10.1109__SLASH__ICPIM.2011.5983724",
+        "10.1109__SLASH__INDUSIS.2010.5565725",
+        "10.1109__SLASH__SHUSER.2012.6268814",
+        "10.1177__SLASH__00207209211064059",
+        "10.1177__SLASH__1742766508101313",
+        "10.3130__SLASH__aija.84.751"
+    ],
+    "3": [
+        "10.1515__SLASH__9783110346329.xi",
+        "10.1515__SLASH__9783110337211.432",
+        "10.3989__SLASH__aeamer.2012.2.09",
+        "10.3989__SLASH__redc.2008.4.647",
+        "10.5937__SLASH__artefact3-15929",
+        "10.1016__SLASH__B978-0-12-701250-6.50017-0",
+        "10.1016__SLASH__j.scoms.2013.04.032",
+        "10.1017__SLASH__CCOL0521650186.018",
+        "10.1017__SLASH__CCOL0521822424.012",
+        "10.1017__SLASH__CHOL9780521762182.013",
+        "10.1017__SLASH__tdo.2021.14",
+        "10.1080__SLASH__25785273.2022.2066852",
+        "10.1111__SLASH__heyj.12083",
+        "10.1111__SLASH__j.1477-4658.2010.00694.x",
+        "10.1145__SLASH__3465631.3465645",
+        "10.1163__SLASH__15685349-12341340A",
+        "10.1163__SLASH__9789004314832_retr",
+        "10.1515__SLASH__9783050073835-001",
+        "10.1515__SLASH__9783050073835-002",
+        "10.1515__SLASH__9783050073835-004",
+        "10.1515__SLASH__9783050073835-005",
+        "10.1515__SLASH__9783110337211.424",
+        "10.1515__SLASH__9783110337211.ix",
+        "10.1515__SLASH__9783110337211.toc",
+        "10.1515__SLASH__9783110346329.1",
+        "10.1515__SLASH__9783110346329.311",
+        "10.1515__SLASH__9783110346329.toc",
+        "10.1515__SLASH__9783110346329.xii",
+        "10.1515__SLASH__9783110355062.1",
+        "10.1515__SLASH__9783110355062.611",
+        "10.1515__SLASH__9783110355062.xxiii",
+        "10.1515__SLASH__9783110355062.xxiv",
+        "10.1515__SLASH__9783110355062.xxviii",
+        "10.1515__SLASH__9783110937381.5",
+        "10.1515__SLASH__9783110937770-013",
+        "10.1515__SLASH__9783110937770-015",
+        "10.1515__SLASH__9783110976618.5",
+        "10.1515__SLASH__9783111725093.1",
+        "10.1515__SLASH__9783111725093.233",
+        "10.1515__SLASH__9783111725093.235",
+        "10.1515__SLASH__9783111725093.237",
+        "10.1515__SLASH__9783111725093.240",
+        "10.1515__SLASH__9783111725093.V",
+        "10.1515__SLASH__9783486852769-002",
+        "10.1515__SLASH__9783486852769-018",
+        "10.1515__SLASH__9783486852769-034",
+        "10.1515__SLASH__9783486992168.69",
+        "10.1515__SLASH__9783486992182.1",
+        "10.1515__SLASH__9783486992182.517",
+        "10.1515__SLASH__9783598441066.3",
+        "10.1515__SLASH__9783598441066.319",
+        "10.1515__SLASH__9783598441066.4",
+        "10.1515__SLASH__9783598441240.189",
+        "10.1515__SLASH__9783598441240.7",
+        "10.1590__SLASH__S0104-87752007000100006",
+        "10.3989__SLASH__aeamer.2008.v65.i1.106"
+    ]
+};
+                var app_meta = {
+    "10.1007__SLASH__1-4020-3001-0_16": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Moral Philosophy on the Threshold of Modernity",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Concerns/Issues about Referencing/Attributions",
+            "+Euphemisms for Plagiarism",
+            "+Investigation by Company/Institution",
+            "+Plagiarism of Text"
+        ],
+        "Subject": [
+            "(HUM) History - Europe",
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1007__SLASH__978-3-030-24139-1_11": {
+        "ArticleType": "Book Chapter/Reference Work;Research Article;",
+        "Journal": "Orthodox Churches and Politics in Southeastern Europe: Nationalism, Conservativism, and Intolerance",
+        "Publisher": "Springer - Nature Publishing Group",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Objections by Author(s)",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1007__SLASH__978-3-319-66634-1_28": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "The Language of Thought in Late Medieval Philosophy",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Text"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry",
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1007__SLASH__978-981-10-4053-5_3": {
+        "ArticleType": "Book Chapter/Reference Work;Research Article;",
+        "Journal": "Global History and New Polycentric Approaches: Europe, Asia and the Americas in a World Network System",
+        "Publisher": "Springer - Nature Publishing Group",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Asia",
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1007__SLASH__s00170-022-09634-x": {
+        "ArticleType": "Research Article;",
+        "Journal": "The International Journal of Advanced Manufacturing Technology",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Concerns/Issues about Referencing/Attributions",
+            "+Fake Peer Review",
+            "+Rogue Editor",
+            "+Unreliable Results"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1007__SLASH__s10912-009-9104-6": {
+        "ArticleType": "Research Article;",
+        "Journal": "Journal of Medical Humanities",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1007__SLASH__s11059-014-0289-y": {
+        "ArticleType": "Research Article;",
+        "Journal": "Neohelicon",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Duplication of Text",
+            "+Euphemisms for Duplication",
+            "+Investigation by Journal/Publisher",
+            "+Plagiarism of Text"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1007__SLASH__s11059-017-0410-0": {
+        "ArticleType": "Review Article;",
+        "Journal": "Neohelicon",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1007__SLASH__s11245-015-9305-8": {
+        "ArticleType": "Research Article;",
+        "Journal": "Topoi",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1007__SLASH__s41603-018-0040-y": {
+        "ArticleType": "Review Article;",
+        "Journal": "International Journal of Latin American Religions",
+        "Publisher": "Springer",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1016__SLASH__B978-0-12-701250-6.50017-0": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "The Rise of the Egalitarian Family: Aristocratic Kinship and Domestic Relations in Eighteenth-Century England",
+        "Publisher": "Elsevier",
+        "Reason": [
+            "+Transfer of Copyright/Ownership"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1016__SLASH__j.conbuildmat.2022.129153": {
+        "ArticleType": "Other;",
+        "Journal": "Construction and Building Materials",
+        "Publisher": "Elsevier",
+        "Reason": [
+            "+Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Journalism"
+        ]
+    },
+    "10.1016__SLASH__j.sbspro.2011.05.014": {
+        "ArticleType": "Research Article;",
+        "Journal": "Procedia - Social and Behavioral Sciences",
+        "Publisher": "Elsevier",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1016__SLASH__j.sbspro.2013.08.841": {
+        "ArticleType": "Review Article;",
+        "Journal": "Procedia - Social and Behavioral Sciences",
+        "Publisher": "Elsevier",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1016__SLASH__j.sbspro.2015.01.949": {
+        "ArticleType": "Research Article;",
+        "Journal": "Procedia - Social and Behavioral Sciences",
+        "Publisher": "Elsevier",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1016__SLASH__j.scoms.2013.04.032": {
+        "ArticleType": "Other;",
+        "Journal": "Studies in Communication Sciences",
+        "Publisher": "Swiss Association of Communication and Media Research",
+        "Reason": [
+            "+Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1016__SLASH__j.shpsa.2011.02.001": {
+        "ArticleType": "Research Article;",
+        "Journal": "Studies in History and Philosophy of Science Part A",
+        "Publisher": "Elsevier",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) History - General",
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1017__SLASH__CCOL0521650186.018": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "The Cambridge Companion to Augustine",
+        "Publisher": "Cambridge University Press",
+        "Reason": [
+            "+Copyright Claims"
+        ],
+        "Subject": [
+            "(HUM) History - Europe",
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1017__SLASH__CCOL0521822424.012": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "The Cambridge Companion to Early Modern Philosophy",
+        "Publisher": "Cambridge University Press",
+        "Reason": [
+            "+Copyright Claims",
+            "+Legal Reasons/Legal Threats",
+            "+Notice - Limited or No Information",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe",
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1017__SLASH__CHOL9780521762182.013": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "The Cambridge History of Medieval Philosophy",
+        "Publisher": "Cambridge University Press",
+        "Reason": [
+            "+Legal Reasons/Legal Threats",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) History - Europe",
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1017__SLASH__jbr.2021.186": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of British Studies",
+        "Publisher": "Cambridge University Press",
+        "Reason": [
+            "+Plagiarism of Text"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry",
+            "(HUM) History - Europe",
+            "(HUM) History - North America",
+            "(HUM) History - United States"
+        ]
+    },
+    "10.1017__SLASH__tdo.2021.14": {
+        "ArticleType": "Review Article;",
+        "Journal": "Traditio",
+        "Publisher": "Cambridge University Press",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Investigation by Third Party",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1073__SLASH__pnas.0903490106": {
+        "ArticleType": "Auto/Biography;",
+        "Journal": "PNAS: Proceedings of the National Academy of Sciences of the United States of America",
+        "Publisher": "National Academy of Sciences (NAS)",
+        "Reason": [
+            "+Error in Text"
+        ],
+        "Subject": [
+            "(HUM) Arts - Biography"
+        ]
+    },
+    "10.1075__SLASH__rro.50.1.001edi": {
+        "ArticleType": "Review Article;",
+        "Journal": "Revue Romane",
+        "Publisher": "John Benjamins",
+        "Reason": [
+            "+Investigation by Journal/Publisher",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__00397709.2015.1044880": {
+        "ArticleType": "Review Article;",
+        "Journal": "Symposium: A Quarterly Journal in Modern Literatures",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Investigation by Journal/Publisher",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__00397709.2015.1044881": {
+        "ArticleType": "Review Article;",
+        "Journal": "Symposium: A Quarterly Journal in Modern Literatures",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplication of Article",
+            "+Investigation by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__0895769X.2020.1734288": {
+        "ArticleType": "Research Article;",
+        "Journal": "ANQ: A Quarterly Journal of Short Articles, Notes and Reviews",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts - Film Studies",
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__01419870.2014.886365": {
+        "ArticleType": "Review Article;",
+        "Journal": "Ethnic and Racial Studies",
+        "Publisher": "SAGE Publications",
+        "Reason": [
+            "+Falsification/Fabrication of Data",
+            "+Investigation by Company/Institution",
+            "+Investigation by Journal/Publisher",
+            "+Misconduct - Official Investigation/Finding",
+            "+Misconduct by Author"
+        ],
+        "Subject": [
+            "(HUM) History - Europe",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1080__SLASH__1743873X.2018.1499460": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Heritage Tourism",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1080__SLASH__03058034.2021.1896227": {
+        "ArticleType": "Review Article;",
+        "Journal": "The London Journal",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1080__SLASH__09502386.2019.1621075": {
+        "ArticleType": "Review Article;",
+        "Journal": "Cultural Studies",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplication of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__09503110.2020.1815154": {
+        "ArticleType": "Review Article;",
+        "Journal": "Al-Mas\u00c4\u0081q",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Asia",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1080__SLASH__09503110.2020.1815157": {
+        "ArticleType": "Review Article;",
+        "Journal": "Al-Mas\u00c4\u0081q",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Asia",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1080__SLASH__09596410.2021.1945751": {
+        "ArticleType": "Research Article;",
+        "Journal": "Islam and Christian\u00e2\u20ac\u201cMuslim Relations",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Asia",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1080__SLASH__13555502.2010.546618": {
+        "ArticleType": "Research Article;",
+        "Journal": "Journal of Victorian Culture",
+        "Publisher": "Oxford Academic",
+        "Reason": [
+            "+Duplication of Article",
+            "+Euphemisms for Duplication"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__13642529.2014.915496": {
+        "ArticleType": "Review Article;",
+        "Journal": "Rethinking History: The Journal of Theory and Practice",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1080__SLASH__14608944.2019.1687179": {
+        "ArticleType": "Review Article;",
+        "Journal": "National Identities",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Error in Text",
+            "+Retract and Replace"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1080__SLASH__14664658.2019.1672947": {
+        "ArticleType": "Research Article;",
+        "Journal": "American Nineteenth Century History",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) History - North America"
+        ]
+    },
+    "10.1080__SLASH__14715880.2014.886808": {
+        "ArticleType": "Review Article;",
+        "Journal": "Studies in French Cinema",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts - Film Studies"
+        ]
+    },
+    "10.1080__SLASH__14725886.2012.722811": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Modern Jewish Studies",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplication of Article",
+            "+Euphemisms for Duplication"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__14725886.2021.1903762": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Modern Jewish Studies",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1080__SLASH__14782804.2018.1558959": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Contemporary European Studies",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1080__SLASH__14788810.2015.1044242": {
+        "ArticleType": "Research Article;",
+        "Journal": "Atlantic Studies",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Lack of Approval from Company/Institution",
+            "+Plagiarism of Text"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry",
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1080__SLASH__17445647.2012.690181": {
+        "ArticleType": "Research Article;",
+        "Journal": "Journal of Maps",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Cartography"
+        ]
+    },
+    "10.1080__SLASH__19422539.2019.1649935": {
+        "ArticleType": "Research Article;",
+        "Journal": "International Studies in Catholic Education",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Error in Analyses",
+            "+Error in Results and/or Conclusions"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1080__SLASH__23311983.2021.2005301": {
+        "ArticleType": "Research Article;",
+        "Journal": "Cogent Arts & Humanities",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Asia",
+            "(HUM) Journalism"
+        ]
+    },
+    "10.1080__SLASH__25739638.2020.1866286": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Contemporary Central and Eastern Europe",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1080__SLASH__25785273.2022.2066852": {
+        "ArticleType": "Research Article;",
+        "Journal": "Transnational Screens",
+        "Publisher": "Taylor and Francis",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts - Film Studies"
+        ]
+    },
+    "10.1086__SLASH__711388": {
+        "ArticleType": "Review Article;",
+        "Journal": "Speculum",
+        "Publisher": "The University of Chicago Press",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - Asia",
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1093__SLASH__camqtly__SLASH__bfs030": {
+        "ArticleType": "Review Article;",
+        "Journal": "The Cambridge Quarterly",
+        "Publisher": "Oxford Academic",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts - Film Studies",
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1093__SLASH__fh__SLASH__crn067": {
+        "ArticleType": "Review Article;",
+        "Journal": "French History",
+        "Publisher": "Oxford Academic",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1093__SLASH__jcs__SLASH__cst044": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Church & State",
+        "Publisher": "Oxford Academic",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1093__SLASH__jos__SLASH__ffx002": {
+        "ArticleType": "Research Article;",
+        "Journal": "The Journal of Semantics",
+        "Publisher": "Oxford Academic",
+        "Reason": [
+            "+Concerns/Issues About Results",
+            "+Error in Analyses",
+            "+Error in Text",
+            "+Retract and Replace"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5374859": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5374875": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General",
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5374918": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - Music"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5374938": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General",
+            "(HUM) History - Asia",
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5374939": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5374944": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General",
+            "(HUM) History - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375014": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375037": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - Music"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375059": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375075": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375094": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375124": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375213": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375241": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375244": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375247": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375254": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General",
+            "(HUM) History - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375299": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375382": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2009.5375385": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 IEEE 10th International Conference on Computer-Aided Industrial Design & Conceptual Design",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General",
+            "(HUM) History - Asia",
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1109__SLASH__CAIDCD.2010.5681866": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2010 IEEE 11th International Conference on Computer-Aided Industrial Design & Conceptual Design 1",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__ICAMS.2010.5552908": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2010 IEEE International Conference on Advanced Management Science (ICAMS 2010)",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5774204": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5774294": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5774410": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5774647": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5775307": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5775736": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5775744": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5775883": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5775975": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5776030": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5776378": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5776408": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5776469": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICETCE.2011.5776471": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Electric Technology and Civil Engineering: ICETCE 2011",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICMSS.2009.5302177": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2009 International Conference on Management and Service Science",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.1109__SLASH__ICPIM.2011.5983724": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2011 International Conference on Product Innovation Management (ICPIM 2011)",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Breach of Policy by Author",
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__INDUSIS.2010.5565720": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2010 2nd International Conference on Industrial and Information Systems",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "Notice - No/Limited Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__INDUSIS.2010.5565725": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2010 2nd International Conference on Industrial and Information Systems",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1109__SLASH__SHUSER.2012.6268814": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "2012 IEEE Symposium on Humanities, Science and Engineering Research",
+        "Publisher": "IEEE: Institute of Electrical and Electronics Engineers",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1111__SLASH__disa.12364": {
+        "ArticleType": "Research Article;",
+        "Journal": "Disasters",
+        "Publisher": "Wiley",
+        "Reason": [
+            "+Notice - Limited or No Information",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1111__SLASH__heyj.12083": {
+        "ArticleType": "Review Article;",
+        "Journal": "The Heythrop Journal",
+        "Publisher": "Wiley",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1111__SLASH__j.1477-4658.2010.00694.x": {
+        "ArticleType": "Research Article;",
+        "Journal": "Renaissance Studies",
+        "Publisher": "Wiley",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Text"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1111__SLASH__j.1741-4113.2007.00438.x": {
+        "ArticleType": "Review Article;",
+        "Journal": "Literature Compass",
+        "Publisher": "Wiley",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1145__SLASH__3465631.3465645": {
+        "ArticleType": "Conference Abstract/Paper;",
+        "Journal": "ICIMTECH 21: The Sixth International Conference on Information Management and Technology",
+        "Publisher": "Association for Computing Machinery (ACM)",
+        "Reason": [
+            "+Fake Peer Review",
+            "+Investigation by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1155__SLASH__2022__SLASH__9802454": {
+        "ArticleType": "Research Article;",
+        "Journal": "Mobile Information Systems",
+        "Publisher": "Hindawi",
+        "Reason": [
+            "+Fake Peer Review",
+            "+Investigation by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts - Music"
+        ]
+    },
+    "10.1155__SLASH__2022__SLASH__9870505": {
+        "ArticleType": "Research Article;",
+        "Journal": "Journal of Electrical and Computer Engineering",
+        "Publisher": "Hindawi",
+        "Reason": [
+            "+Fake Peer Review",
+            "+Investigation by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts - Music"
+        ]
+    },
+    "10.1162__SLASH__artm_e_00332": {
+        "ArticleType": "Research Article;",
+        "Journal": "ARTMargins",
+        "Publisher": "MIT Press",
+        "Reason": [
+            "+Investigation by Journal/Publisher",
+            "+Objections by Third Party",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts - General"
+        ]
+    },
+    "10.1163__SLASH__15685349-12341340A": {
+        "ArticleType": "Review Article;",
+        "Journal": "Vivarium",
+        "Publisher": "Brill",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1163__SLASH__9789004314832_retr": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "The Newest Sappho: P. Sapph. Obbink and P. G Cinv.105, frs.1\u00e2\u20ac\u201c4",
+        "Publisher": "Brill",
+        "Reason": [
+            "+Concerns/Issues About Data",
+            "+Concerns/Issues about Third Party Involvement"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1177__SLASH__0024363920965378": {
+        "ArticleType": "Research Article;",
+        "Journal": "The Linacre Quarterly",
+        "Publisher": "SAGE Publications",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1177__SLASH__0047244119839667": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of European Studies",
+        "Publisher": "SAGE Publications",
+        "Reason": [
+            "+Duplication of Article",
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1177__SLASH__00207209211064059": {
+        "ArticleType": "Article in Press;Research Article;",
+        "Journal": "International Journal of Electrical Engineering & Education",
+        "Publisher": "SAGE Publications",
+        "Reason": [
+            "+Concerns/Issues about Referencing/Attributions",
+            "+Fake Peer Review",
+            "+Paper Mill"
+        ],
+        "Subject": [
+            "(HUM) Architecture",
+            "(HUM) History - Asia"
+        ]
+    },
+    "10.1177__SLASH__1368431011432375": {
+        "ArticleType": "Research Article;",
+        "Journal": "European Journal of Social Theory",
+        "Publisher": "SAGE Publications",
+        "Reason": [
+            "+Duplicate Publication through Error by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1177__SLASH__1742766508101313": {
+        "ArticleType": "Revision;",
+        "Journal": "Global Media and Communication",
+        "Publisher": "SAGE Publications",
+        "Reason": [
+            "+Concerns/Issues About Authorship",
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1215__SLASH__1089201x-2008-072": {
+        "ArticleType": "Research Article;",
+        "Journal": "Comparative Studies of South Asia, Africa and the Middle East",
+        "Publisher": "Duke University Press",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1353__SLASH__cdr.2011.0017": {
+        "ArticleType": "Review Article;",
+        "Journal": "Comparative Drama",
+        "Publisher": "Western Michigan University",
+        "Reason": [
+            "+Duplication of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1353__SLASH__dtc.2013.0033": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Dramatic Theory and Criticism",
+        "Publisher": "University of Kansas",
+        "Reason": [
+            "+Duplication of Article",
+            "+Euphemisms for Duplication"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1353__SLASH__dtc.2014.0004": {
+        "ArticleType": "Review Article;",
+        "Journal": "Journal of Dramatic Theory and Criticism",
+        "Publisher": "University of Kansas",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1353__SLASH__frf.0.0051": {
+        "ArticleType": "Review Article;",
+        "Journal": "French Forum",
+        "Publisher": "University of Nebraska Press",
+        "Reason": [
+            "+Duplication of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1353__SLASH__lit.2015.0029": {
+        "ArticleType": "Research Article;",
+        "Journal": "College Literature",
+        "Publisher": "Johns Hopkins University Press",
+        "Reason": [
+            "+Investigation by Company/Institution",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1353__SLASH__sho.2011.0038": {
+        "ArticleType": "Review Article;",
+        "Journal": "Shofar",
+        "Publisher": "Purdue University Press",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Investigation by Company/Institution",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.1515__SLASH__9783050073835-001": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "H\u00c3\u00a4userbuch zum Nienborgschen Atlas",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Cartography",
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783050073835-002": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "H\u00c3\u00a4userbuch zum Nienborgschen Atlas",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown"
+        ],
+        "Subject": [
+            "(HUM) Cartography",
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783050073835-004": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "H\u00c3\u00a4userbuch zum Nienborgschen Atlas",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Cartography",
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783050073835-005": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "H\u00c3\u00a4userbuch zum Nienborgschen Atlas",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown"
+        ],
+        "Subject": [
+            "(HUM) Cartography",
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110204544.6.277": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "'Herbst des Mittelalters' Fragen zur Bewertung des 14th und 15th Jahrhunderts",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Investigation by Company/Institution",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.1515__SLASH__9783110337211.424": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der ganze Verlag ist einfach eine Bonbonniere",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110337211.432": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der ganze Verlag ist einfach eine Bonbonniere",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110337211.ix": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der ganze Verlag ist einfach eine Bonbonniere",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110337211.toc": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der ganze Verlag ist einfach eine Bonbonniere",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110346329.1": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Das Autorenfoto in Buch und Buchwerbung",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110346329.311": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Das Autorenfoto in Buch und Buchwerbung",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110346329.toc": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Das Autorenfoto in Buch und Buchwerbung",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110346329.xi": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Das Autorenfoto in Buch und Buchwerbung",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110346329.xii": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Das Autorenfoto in Buch und Buchwerbung",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110355062.1": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Deutsche Drucker und Buchh\u00c3\u00a4ndler in London 1680-1811",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110355062.611": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Deutsche Drucker und Buchh\u00c3\u00a4ndler in London 1680-1811",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110355062.xxiii": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Deutsche Drucker und Buchh\u00c3\u00a4ndler in London 1680-1811",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110355062.xxiv": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Deutsche Drucker und Buchh\u00c3\u00a4ndler in London 1680-1811",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110355062.xxviii": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Deutsche Drucker und Buchh\u00c3\u00a4ndler in London 1680-1811",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110937381.5": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Ein Verleger sucht sein Publikum",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783110937770-013": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der Folkwang Verlag - Auf dem Weg zu einem imagin\u00c3\u00a4ren Museum",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110937770-015": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der Folkwang Verlag - Auf dem Weg zu einem imagin\u00c3\u00a4ren Museum",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783110976618.5": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Der Verlag H. Goverts im Dritten Reich",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783111725093.1": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Gott\u00c3\u00a4hnlichkeit, Verg\u00c3\u00b6ttlichung und Erh\u00c3\u00b6hung zu seligem Leben",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1515__SLASH__9783111725093.233": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Gott\u00c3\u00a4hnlichkeit, Verg\u00c3\u00b6ttlichung und Erh\u00c3\u00b6hung zu seligem Leben",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1515__SLASH__9783111725093.235": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Gott\u00c3\u00a4hnlichkeit, Verg\u00c3\u00b6ttlichung und Erh\u00c3\u00b6hung zu seligem Leben",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1515__SLASH__9783111725093.237": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Gott\u00c3\u00a4hnlichkeit, Verg\u00c3\u00b6ttlichung und Erh\u00c3\u00b6hung zu seligem Leben",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1515__SLASH__9783111725093.240": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Gott\u00c3\u00a4hnlichkeit, Verg\u00c3\u00b6ttlichung und Erh\u00c3\u00b6hung zu seligem Leben",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1515__SLASH__9783111725093.V": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Gott\u00c3\u00a4hnlichkeit, Verg\u00c3\u00b6ttlichung und Erh\u00c3\u00b6hung zu seligem Leben",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Philosophy",
+            "(HUM) Religion"
+        ]
+    },
+    "10.1515__SLASH__9783486852769-002": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Reform, Reorganisation, Transformation",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783486852769-018": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Reform, Reorganisation, Transformation",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783486852769-034": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Reform, Reorganisation, Transformation",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783486992168.69": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Unaufhebbare Pluralit\u00c3\u00a4t der Kulturen?",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783486992182.1": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Sozialgeschichte des Mittelalters",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783486992182.517": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Sozialgeschichte des Mittelalters",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783598441066.3": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Distribution und \u00c3\u0153bersetzung englischen Schrifttums im Deutschland des 18. Jahrhunderts",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783598441066.4": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Distribution und \u00c3\u0153bersetzung englischen Schrifttums im Deutschland des 18. Jahrhunderts",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783598441066.319": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "Distribution und \u00c3\u0153bersetzung englischen Schrifttums im Deutschland des 18. Jahrhunderts",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - General"
+        ]
+    },
+    "10.1515__SLASH__9783598441240.7": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "... f\u00c3\u00bcr unseren Betrieb lebensnotwendig ...: Georg von Holtzbrinck als Verlagsunternehmer im Dritten Reich",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Copyright Claims",
+            "+Date of Retraction/Other Unknown",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__9783598441240.189": {
+        "ArticleType": "Book Chapter/Reference Work;",
+        "Journal": "... f\u00c3\u00bcr unseren Betrieb lebensnotwendig ...: Georg von Holtzbrinck als Verlagsunternehmer im Dritten Reich",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Lack of"
+        ],
+        "Subject": [
+            "(HUM) History - Europe"
+        ]
+    },
+    "10.1515__SLASH__nzsth-2022-4002": {
+        "ArticleType": "Review Article;",
+        "Journal": "Neue Zeitschrift f\u00c3\u00bcr Systematische Theologie und Religionsphilosophie",
+        "Publisher": "De Gruyter",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.1590__SLASH__S0104-87752007000100006": {
+        "ArticleType": "Research Article;",
+        "Journal": "Varia Historia",
+        "Publisher": "Universidade Federal de Minas Gerais",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Notice - Lack of"
+        ],
+        "Subject": [
+            "(HUM) Cartography",
+            "(HUM) Journalism"
+        ]
+    },
+    "10.2174__SLASH__138945012302220118162514": {
+        "ArticleType": "Commentary/Editorial;",
+        "Journal": "Current Drug Targets",
+        "Publisher": "Bentham Science Publishers",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Journalism"
+        ]
+    },
+    "10.3130__SLASH__aija.84.751": {
+        "ArticleType": "Research Article;",
+        "Journal": "Journal of Architecture and Planning (Transactions of AIJ)",
+        "Publisher": "Architectural Institute of Japan",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.3366__SLASH__nfs.2015.0111": {
+        "ArticleType": "Review Article;",
+        "Journal": "Nottingham French Studies",
+        "Publisher": "Edinburgh University Press",
+        "Reason": [
+            "+Investigation by Journal/Publisher",
+            "+Plagiarism of Article",
+            "+Withdrawal"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.3846__SLASH__jau.2020.12085": {
+        "ArticleType": "Research Article;",
+        "Journal": "Journal of Architecture and Urbanism",
+        "Publisher": "Vilnius Gediminas Technical University",
+        "Reason": [
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.3989__SLASH__aeamer.2008.v65.i1.106": {
+        "ArticleType": "Research Article;",
+        "Journal": "Anuario de Estudios Americanos",
+        "Publisher": "Consejo Superior de Investigaciones Cient\u00c3\u00adficas (CSIC)",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - North America"
+        ]
+    },
+    "10.3989__SLASH__aeamer.2012.2.09": {
+        "ArticleType": "Review Article;",
+        "Journal": "Anuario de Estudios Americanos",
+        "Publisher": "Consejo Superior de Investigaciones Cient\u00c3\u00adficas (CSIC)",
+        "Reason": [
+            "+Duplication of Article"
+        ],
+        "Subject": [
+            "(HUM) History - South America",
+            "(HUM) Religion"
+        ]
+    },
+    "10.3989__SLASH__hs.2015.013": {
+        "ArticleType": "Research Article;",
+        "Journal": "Hispania Sacra",
+        "Publisher": "Consejo Superior de Investigaciones Cient\u00c3\u00adficas (CSIC)",
+        "Reason": [
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.3989__SLASH__redc.2008.4.647": {
+        "ArticleType": "Research Article;",
+        "Journal": "Revista Espanola de Documentacion Cient\u00c3\u00adfica",
+        "Publisher": "Consejo Superior de Investigaciones Cient\u00c3\u00adficas (CSIC)",
+        "Reason": [
+            "+Duplication of Article",
+            "+Investigation by Journal/Publisher"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.4102__SLASH__hts.v77i1.6611": {
+        "ArticleType": "Research Article;",
+        "Journal": "HTS Teologiese Studies/Theological Studies",
+        "Publisher": "AOSIS Publishing",
+        "Reason": [
+            "+Plagiarism of Article",
+            "+Taken from Dissertation/Thesis"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.4236__SLASH__ojpp.2017.72009": {
+        "ArticleType": "Review Article;",
+        "Journal": "Open Journal of Philosophy (OJPP)",
+        "Publisher": "Scientific Research Publishing (SCIRP)",
+        "Reason": [
+            "+Unreliable Results"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.5169__SLASH__seals-791151": {
+        "ArticleType": "Commentary/Editorial;",
+        "Journal": "Studies in Communication Sciences",
+        "Publisher": "Swiss Association of Communication and Media Research",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Philosophy"
+        ]
+    },
+    "10.5937__SLASH__artefact3-15929": {
+        "ArticleType": "Research Article;",
+        "Journal": "Artefact",
+        "Publisher": "CEON/CEES",
+        "Reason": [
+            "+Duplication of Article",
+            "+Euphemisms for Duplication",
+            "+Euphemisms for Plagiarism",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) Architecture"
+        ]
+    },
+    "10.16995__SLASH__ee.1801": {
+        "ArticleType": "Research Article;",
+        "Journal": "Ethnologia Europaea",
+        "Publisher": "Open Library of Humanities",
+        "Reason": [
+            "+Falsification/Fabrication of Data",
+            "+Investigation by Company/Institution",
+            "+Misconduct - Official Investigation/Finding",
+            "+Misconduct by Author"
+        ],
+        "Subject": [
+            "(HUM) Religion"
+        ]
+    },
+    "10.18352__SLASH__erlacs.9751": {
+        "ArticleType": "Research Article;",
+        "Journal": "European Review of Latin American and Caribbean Studies / Revista Europea de Estudios Latinoamericanos y del Caribe",
+        "Publisher": "Centrum voor Studie en Documentatie van Latijns Amerika",
+        "Reason": [
+            "+Date of Retraction/Other Unknown",
+            "+Plagiarism of Article"
+        ],
+        "Subject": [
+            "(HUM) History - North America"
+        ]
+    },
+    "10.30605__SLASH__ethicallingua.v5i2.1037": {
+        "ArticleType": "Research Article;",
+        "Journal": "Ethical Lingua",
+        "Publisher": "Universitas Cokroaminoto Palopo",
+        "Reason": [
+            "+Duplication of Article"
+        ],
+        "Subject": [
+            "(HUM) Arts -Literature/Poetry"
+        ]
+    },
+    "10.30935__SLASH__ojcmt__SLASH__9302": {
+        "ArticleType": "Research Article;",
+        "Journal": "Online Journal of Communication and Media Technologies",
+        "Publisher": "M Bastas Publishing",
+        "Reason": [
+            "+Notice - Limited or No Information"
+        ],
+        "Subject": [
+            "(HUM) History - Europe",
+            "(HUM) Journalism"
+        ]
+    }
+};
+                var att_index = {
+    "Publisher": "string"
+};
+
+                /*FROM MITAO*/
+                var app_x_att = "Publisher";
+                var app_x_att_type = "string";
+                var app_x_data = ["AOSIS Publishing", "Architectural Institute of Japan", "Association for Computing Machinery (ACM)", "Bentham Science Publishers", "Brill", "CEON/CEES", "Cambridge University Press", "Centrum voor Studie en Documentatie van Latijns Amerika", "Consejo Superior de Investigaciones Cient\u00c3\u00adficas (CSIC)", "De Gruyter", "Duke University Press", "Edinburgh University Press", "Elsevier", "Hindawi", "IEEE: Institute of Electrical and Electronics Engineers", "John Benjamins", "Johns Hopkins University Press", "M Bastas Publishing", "MIT Press", "National Academy of Sciences (NAS)", "Open Library of Humanities", "Oxford Academic", "Purdue University Press", "SAGE Publications", "Scientific Research Publishing (SCIRP)", "Springer", "Springer - Nature Publishing Group", "Swiss Association of Communication and Media Research", "Taylor and Francis", "The University of Chicago Press", "Universidade Federal de Minas Gerais", "Universitas Cokroaminoto Palopo", "University of Kansas", "University of Nebraska Press", "Vilnius Gediminas Technical University", "Western Michigan University", "Wiley"];
+
+                /*------------*/
+        /*------------*/
+        var index_trace_colors = {};
+        var charts = new Set(["count","bars"]);
+        var filtered_data = JSON.parse(JSON.stringify(app_init_data));
+        var filter_index = null;
+        var index_meta = {};
+        for (var k_f in app_meta) {
+          for (var m in app_meta[k_f]) {
+            if ((m != app_x_att) && (m in att_index)) {
+              if (!(m in index_meta)) {
+                index_meta[m] =  new Set();
+              }
+              if (att_index[m] == "string"){
+                index_meta[m].add(app_meta[k_f][m]);
+              }else if (att_index[m] == "integer"){
+                index_meta[m].add(app_meta[k_f][m]);
+              }else if (att_index[m].includes("list")) {
+                for (var i = 0; i < app_meta[k_f][m].length; i++) {
+                  index_meta[m].add(app_meta[k_f][m][i]);
+                }
+              }
+            }
+          }
+        }
+
+        /*Define all colors*/
+        function hexToRgbA(hex,opacity){
+            var c;
+            if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+                c= hex.substring(1).split('');
+                if(c.length== 3){
+                    c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+                }
+                c= '0x'+c.join('');
+                return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+opacity+')';
+            }
+            throw new Error('Bad Hex');
+        }
+        var palette = ["#0377a8","#fc6f5f","#e2ce71","#ad7947","#e97947","#5cb991","#ffadcb","#b46ddc"];
+        var index_palette = 0;
+        for (var k_cat in filtered_data) {
+          var color = palette[index_palette%palette.length];
+          var opacity = 1 - (Math.floor(index_palette/palette.length) * 0.20);
+          if (opacity < 0.3) { opacity = 1;}
+          index_trace_colors[k_cat] = hexToRgbA(color,opacity);
+          index_palette += 1;
+        }
+        index_trace_colors["others"] = "#CCCCCC";
+
+        //var top_topics = Object.keys(app_init_data).length;
+
+        function draw_chart(obj_data, x_data, x_att, chart_type, data_type) {
+
+          var type = null;
+          var barmode = null;
+          if (chart_type == "bars") {
+            type = "bar";
+            barmode = "stack";
+          }else if (chart_type == "lines") {
+            type = "scatter";
+          }
+
+          var chart_data = [];
+          var index_palette = 0;
+          for (var cat in obj_data) {
+
+            var trace_color = index_trace_colors[cat];
+
+            var y_vals = [];
+            var y_text = [];
+            for (var i = 0; i < x_data.length; i++) {
+              y_vals.push(obj_data[cat][x_data[i]][data_type]);
+              y_text.push(String((obj_data[cat][x_data[i]]["precentage_total"] * 100).toFixed(2)));
+            }
+
+            var others_opt = {};
+            if (chart_type == "lines") {
+              others_opt = {
+                  line: {
+                    color: trace_color,
+                    width: 1
+                  }
+              }
+            }
+
+            var trace = {
+                x: x_data,
+                y: y_vals,
+                name: cat,
+                type: type,
+                text: y_text,
+                orientation: 'v',
+                hovertemplate: '<b>Topic #'+cat+'</b>'+
+                              '<br>&#8594; <b>%{y}</b> document/s in <b><%{x}></b>'+
+                              '<br>&#8594; <b>%{text}%</b> of all the documents'+
+                              '<extra></extra>',
+                marker: {
+                  color: trace_color,
+                  size: 8
+                }
+            };
+
+            chart_data.push(Object.assign( {}, trace, others_opt));
+          }
+
+          var layout = {};
+          if (chart_type == "bars") {
+            layout = {
+              "hovermode": "closest",
+              "barmode": barmode,
+              "xaxis": {
+                'automargin': true,
+                tickmode: "array",
+                tickvals: x_data,
+                ticktext: x_data
+              },
+              "yaxis":{
+                'automargin': true,
+              }
+            };
+          }else if (chart_type == "lines") {
+            layout = {
+              "hovermode": "closest",
+              "xaxis": {
+                'automargin': true,
+                tickmode: "linear",
+                tickvals: x_data,
+                ticktext: x_data
+              },
+              "yaxis":{
+                'automargin': true,
+              }
+            };
+          }
+
+          if (data_type == "counts") {
+          }else if (data_type == "percentage") {
+            layout["yaxis"] = {tickformat: '.2%'}
+          }
+
+
+
+          Plotly.newPlot('chart_container', chart_data, layout);
+        }
+
+        function check(g= null, v=null) {
+                // check the type of chart
+                var chart_type = null;
+                var data_type = null;
+                if ((g != null) && (g == "g-1")) {
+                  data_type = v;
+                }else {
+                  $(".g-1 label").each(function( index ) {
+                    if ($( this ).hasClass('active')){
+                      data_type = $( this ).attr("value");
+                    }
+                  });
+                }
+
+                if ((g != null) && (g == "g-2")) {
+                  chart_type = v;
+                }else {
+                  $(".g-2 label").each(function( index ) {
+                    if ($( this ).hasClass('active')){
+                      chart_type = $( this ).attr("value");
+                    }
+                  });
+                }
+
+                //now prepare the data
+                // <obj_data> and <x_data>
+                var obj_data = {};
+                var index_counts = {"all": 0, "category":{}, "x_tick":{}}
+                for (var k_cat in filtered_data) {
+                      //init
+                      obj_data[k_cat] = {};
+                      index_counts["category"][k_cat] = 0;
+                      for (var i = 0; i < app_x_data.length; i++) {
+                        obj_data[k_cat][app_x_data[i]] = {"counts":0,"percentage":0};
+                      }
+                      //populate
+                      for (var i = 0; i < filtered_data[k_cat].length; i++) {
+                        var elem_name = filtered_data[k_cat][i];
+                        if (elem_name in app_meta) {
+                          if (app_x_att in app_meta[elem_name]) {
+
+                            var l_att_val = [app_meta[elem_name][app_x_att]];
+                            if (app_x_att_type.includes("list")) {
+                              var l_att_val = app_meta[elem_name][app_x_att];
+                            }
+                            for (var h = 0; h < l_att_val.length; h++) {
+                              att_val = l_att_val[h];
+                              //TODO AN ERROR
+                              if (app_x_data.indexOf(att_val) != -1) {
+                                obj_data[k_cat][att_val]["counts"] += 1;
+                                //update counts
+                                if (!(k_cat in index_counts["category"])) {
+                                  index_counts["category"][k_cat] = 0;
+                                }
+                                if (!(att_val in index_counts["x_tick"])) {
+                                  index_counts["x_tick"][att_val] = 0;
+                                }
+                                index_counts["category"][k_cat] += 1;
+                                index_counts["x_tick"][att_val] += 1;
+                                index_counts["all"] += 1;
+                              }
+                            }
+                          }
+                        }
+                      }
+                }
+
+                /*Refine obj_data and select only the top_topics*/
+                var index_top_topics = {}
+                var index_other_topics = {}
+                var e = document.getElementById("top_topics");
+                var top_topics = parseInt(e.options[e.selectedIndex].value);
+                for (var i = 0; i < app_x_data.length; i++) {
+                  index_top_topics[app_x_data[i]] = new Array();
+                  index_other_topics[app_x_data[i]] = {"categories": new Set(),"counts":0}
+                }
+                for (var k_cat in filtered_data) {
+                  for (var i = 0; i < app_x_data.length; i++) {
+                    var val_x_counts = obj_data[k_cat][app_x_data[i]]["counts"];
+                    index_top_topics[app_x_data[i]].push({"category":k_cat,"counts":val_x_counts});
+                  }
+                }
+                for (var i = 0; i < app_x_data.length; i++) {
+                  // Sort app_x_data[k_cat]
+                  index_top_topics[app_x_data[i]].sort((a, b) => (a.counts < b.counts) ? 1 : -1)
+                  var tot_topics = index_top_topics[app_x_data[i]].length;
+                  if (top_topics < tot_topics) {
+                    index_other_topics[app_x_data[i]]["categories"] = index_top_topics[app_x_data[i]].slice(top_topics, tot_topics);
+                    for (var n = 0; n < index_other_topics[app_x_data[i]]["categories"].length; n++) {
+                      var a_category = index_other_topics[app_x_data[i]]["categories"][n];
+                      index_other_topics[app_x_data[i]]["counts"] += a_category["counts"];
+                    }
+                  }
+                  index_top_topics[app_x_data[i]] = index_top_topics[app_x_data[i]].slice(0, top_topics);
+                }
+
+                //update the obj_data with only the top topics
+                updated_obj_data = {}
+                for (var k_cat in obj_data) {
+                  var count_zeros = 0;
+                  for (var x_key in obj_data[k_cat]) {
+                    //if is not part of the top topics
+                    // -> make its count 0
+                    function search_category(nameKey, myArray){
+                        for (var i=0; i < myArray.length; i++) {
+                            if (myArray[i].category === nameKey) {
+                                return myArray[i];
+                            }
+                        }
+                        return -1;
+                    }
+                    if (search_category(k_cat, index_top_topics[x_key]) == -1){
+                      obj_data[k_cat][x_key]["counts"] = 0;
+                      count_zeros += 1;
+                    }
+                  }
+                  // remove it if the topic is 0 in for all the x values
+                  if (count_zeros != app_x_data.length) {
+                    updated_obj_data[k_cat] = obj_data[k_cat];
+                  }
+                }
+                obj_data = updated_obj_data;
+                obj_data["others"] = index_other_topics;
+
+                for (var k_cat in obj_data) {
+                  for (var x_key in obj_data[k_cat]) {
+                    obj_data[k_cat][x_key]["percentage"] =  obj_data[k_cat][x_key]["counts"]/index_counts["x_tick"][x_key];
+                    obj_data[k_cat][x_key]["precentage_total"] = obj_data[k_cat][x_key]["counts"]/index_counts["all"];
+                  }
+                }
+
+                //console.log(obj_data);
+                draw_chart(obj_data, app_x_data, app_x_att, chart_type, data_type);
+        }
+
+        function filter() {
+
+              // filter_index = {"att":{Set of values}}
+              filtered_data = JSON.parse(JSON.stringify(app_init_data));
+              var copy_filtered_data = JSON.parse(JSON.stringify(filtered_data));
+              for (var k_cat in filtered_data) {
+                  copy_filtered_data[k_cat] = [];
+                  for (var i = 0; i < filtered_data[k_cat].length; i++) {
+                    var elem_name = filtered_data[k_cat][i];
+                    var include = false;
+                    //in case we have no filters always include
+                    if (Object.keys(att_index).length == 0) {
+                      include = true;
+                    }else{
+                      //in case we have filters -> all meta filters must be satisfaied
+                      include = true;
+                      if (elem_name in app_meta) {
+                        var inter_check = true;
+                        for (var filter_att in att_index) {
+                          inter_check = inter_check && (filter_att in app_meta[elem_name]);
+                          if (inter_check) {
+                            var a_meta_att_value = app_meta[elem_name][filter_att];
+                            inter_check = inter_check && (filter_att in filter_index);
+                            if (inter_check) {
+                              var meta_res = false;
+                              if (att_index[filter_att] == "string") {
+                                meta_res = (meta_res || filter_index[filter_att].has(a_meta_att_value));
+                              }else if (att_index[filter_att].includes("list")) {
+                                for (var j = 0; j < a_meta_att_value.length; j++) {
+                                  meta_res = (meta_res || filter_index[filter_att].has(a_meta_att_value[j]));
+                                }
+                              }
+                              inter_check = inter_check && meta_res;
+                            }
+                          }
+                          include = include && inter_check;
+                        }
+                      }
+                    }
+
+                    if (include) {
+                      copy_filtered_data[k_cat].push(elem_name);
+                    }
+                  }
+              }
+              filtered_data = copy_filtered_data;
+            }
+
+        </script>
+
+      </head>
+      <body>
+              <div class="handlers-container">
+
+                <div class="switch_buttons">
+                  <div class="g-1 btn-group btn-group-toggle" data-toggle="buttons">
+                     <label onchange="check('g-1','counts');" value="counts" class="switch-btn btn btn-light active">
+                       <input value="counts" type="radio" name="options" id="option_g1_1" autocomplete="off" checked> Counts <span style="margin-left: 5px"> # </span>
+                     </label>
+                     <label onchange="check('g-1','percentage');" value="percentage" class="switch-btn btn btn-light">
+                       <input value="percentage" type="radio" name="options" id="option_g1_2" autocomplete="off"> Percentage <span style="margin-left: 5px"> % </span>
+                     </label>
+                  </div>
+                  <br>
+                  <div class="g-2 btn-group btn-group-toggle" data-toggle="buttons">
+                     <label onchange="check('g-2','bars');" value="bars" class="switch-btn btn btn-light active">
+                       <input value="bars" type="radio" name="options" id="option_g2_1" autocomplete="off" checked> Bars chart <span style="margin-left: 5px">
+                       <svg class="bi bi-bar-chart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="4" height="5" x="1" y="10" rx="1"/>
+                          <rect width="4" height="9" x="6" y="6" rx="1"/>
+                          <rect width="4" height="14" x="11" y="1" rx="1"/>
+                        </svg>
+                        </span>
+                     </label>
+                     <label onchange="check('g-2','lines');" value="lines" id="lines_chart" class="switch-btn btn btn-light">
+                       <input value="lines" type="radio" name="options" id="option_g2_2" autocomplete="off"> Lines chart
+                       <span style="margin-left: 5px">
+                         <svg class="bi bi-graph-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
+                        <path fill-rule="evenodd" d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z"/>
+                        <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4h-3.5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                      </span>
+                     </label>
+                  </div>
+                </div>
+
+                <div class="sec-title">Refine</div>
+                <div id="refine_container"></div>
+
+                <div class="sec-title">Filter</div>
+                <div id="filters_container"></div>
+
+              </div>
+
+
+
+              <div id="chart_container" class="chart-container"></div>
+
+              <script type="text/javascript">
+
+                /* BUild doms*/
+                for (var m_att in index_meta) {
+                  var filter_box = "";
+                  var l_meta_values = Array.from(index_meta[m_att]);
+                  l_meta_values = l_meta_values.sort();
+                  if (l_meta_values.length > 0) {
+                    for (var i = 0; i < l_meta_values.length; i++) {
+                      filter_box = filter_box + '<span><input class="f-checkbox" data-att="'+m_att+'" type="checkbox" id="checkbox_'+String(i)+'" value="'+l_meta_values[i]+'" checked></span><span><label for="checkbox_'+String(i)+'">'+l_meta_values[i]+'</label></span><br>';
+                    }
+                    filter_box = "<div class='m-box'><button id='"+m_att+"_btn' type='button' class='btn btn-light'>Metadata attribute: "+m_att+"</button><span class='pre' id='"+m_att+"_pre'>+</span><div id='"+m_att+"_values' class='m-box-values'>" +'<input class="f-all-checkbox" data-att="'+m_att+'" data-checked=true type="checkbox" id="all_checkbox_'+String(i)+'" checked></span><span><label class="f-all-checkbox" for="all_checkbox_'+String(i)+'">Check/Uncheck all</label><br>'+ filter_box.substring(0, filter_box.length-4)+"</div>";
+                  }
+                  document.getElementById("filters_container").innerHTML += filter_box;
+                }
+                document.getElementById("filters_container").innerHTML += "<button id='btn_filter' type='button' class='btn btn-dark'>Apply filters</button>";
+                for (var m_att in index_meta) {
+
+                   $("#"+m_att+"_btn").click(function(event) {
+                    var values_box = event.target.id.replace("_btn","_values");
+                    var pre_box = event.target.id.replace("_btn","_pre");
+                    var display_val = $("#"+values_box).css('display');
+
+                    if (display_val == "none") {
+                      document.getElementById(pre_box).innerHTML = "-";
+                      $("#"+values_box).css("display", "block");
+                    }else {
+                      if (display_val == "block") {
+                        document.getElementById(pre_box).innerHTML = "+";
+                        $("#"+values_box).css("display", "none");
+                      }
+                    }
+                  });
+                }
+
+                if (Object.keys(index_meta).length > 0) {
+                  $("#btn_filter").click(function(event) {
+                    var checked_inputs = $(".f-checkbox:checked");
+                    var index_filters = {};
+                    for (var i = 0; i < checked_inputs.length; i++) {
+                      var checked_att = checked_inputs[i].getAttribute("data-att");
+                      var checked_value = checked_inputs[i].getAttribute("value");
+                      if (!(checked_att in index_filters)) {
+                        index_filters[checked_att] = new Set();
+                      }
+                      index_filters[checked_att].add(checked_value);
+                    }
+                    filter_index = index_filters;
+                    filter();
+                    check();
+                 });
+                }
+
+                if (Object.keys(att_index).length == 0) {
+                 $("#filters_container").css("display", "none");
+                 $("#filters_container").prev().css("display", "none");
+                }else {
+                 $(".f-all-checkbox").change(function() {
+
+                   var current_val = $(this).attr('checked');
+                   var new_val = !current_val;
+                   var data_att = $(this).attr('data-att');
+                   $(".f-checkbox[data-att='"+data_att+"']").prop('checked', new_val);
+                   $(this).attr('checked',new_val);
+                 });
+                }
+
+                var str_options = "";
+                for (var topic_i = 0; topic_i < Object.keys(app_init_data).length-1; topic_i++) {
+                 str_options += "<option value='"+String(topic_i+1)+"'>Show top "+String(topic_i+1)+" topics</option>";
+                }
+                str_options = "<option value='"+String(Object.keys(app_init_data).length)+"'>Show all the topics</option>" + str_options;
+                document.getElementById("refine_container").innerHTML += "<select id='top_topics'>"+str_options+"</select>";
+
+                $("#top_topics").change(function(event) {
+                 check();
+                });
+
+                $("#btn_filter").click();
+                $("#option_g1_1").click();
+                </script>
+                </body>
+                </html>
+        
